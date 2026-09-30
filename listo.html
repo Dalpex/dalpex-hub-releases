@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dalpex Hub</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center;
+    background: #070707; color: #ededed; padding: 24px;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  .caja {
+    text-align: center; max-width: 420px; width: 100%;
+    padding: 44px 36px; background: #0e0e0e;
+    border: 1px solid #1d1d1d; border-radius: 6px;
+    box-shadow: 0 30px 80px -30px #000;
+  }
+  .marca {
+    font-family: Consolas, ui-monospace, monospace; font-size: 12px;
+    letter-spacing: .28em; color: #7a7a7a; margin-bottom: 26px;
+  }
+  .marca b { color: #e02020; font-weight: 700; }
+  .icono {
+    width: 56px; height: 56px; margin: 0 auto 20px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 26px; line-height: 1;
+    border: 2px solid currentColor;
+  }
+  .ok { color: #2ee06a; }
+  .mal { color: #ff5b5b; }
+  h1 { font-size: 21px; margin: 0 0 10px; font-weight: 650; }
+  p { margin: 0; color: #9a9a9a; font-size: 14px; line-height: 1.6; }
+  .pie { margin-top: 26px; font-size: 12px; color: #5d5d5d; }
+</style>
+</head>
+<body>
+  <div class="caja">
+    <div class="marca">[ <b>DALPEX</b> ] HUB</div>
+    <div class="icono ok" id="icono">✓</div>
+    <h1 id="titulo">Listo</h1>
+    <p id="texto">Ya podés volver a Dalpex Hub: estás adentro.</p>
+    <div class="pie">Podés cerrar esta pestaña.</div>
+  </div>
+<script>
+  var p = new URLSearchParams(location.search);
+  if (p.get('ok') === '0') {
+    document.getElementById('icono').textContent = '✕';
+    document.getElementById('icono').className = 'icono mal';
+    document.getElementById('titulo').textContent = 'No se pudo entrar';
+    document.getElementById('texto').textContent = 'Volvé a Dalpex Hub y probá de nuevo con "Entrar con Discord".';
+  } else if (p.get('u')) {
+    document.getElementById('texto').textContent = 'Entraste como ' + p.get('u') + '. Volvé a Dalpex Hub: ya estás adentro.';
+  }
+</script>
+</body>
+</html>
